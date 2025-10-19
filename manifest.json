@@ -4,7 +4,7 @@
   "start_url": "https://pd2.github.io/panchang-riddle/",
   "icons": [
     {
-      "src": "assests/panchang_riddle.jpg",
+      "src": "assets/panchang_riddle.jpg",
       "sizes": "256x256",
       "type": "image/jpg"
     }
