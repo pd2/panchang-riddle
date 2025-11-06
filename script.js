@@ -17,7 +17,7 @@ async function fetchPanchang(dateInput, callback) {
   	// let validDate = dateInput.toISOString().split('T')[0];
 
     try {
-      showLoadingPopup(); // Show loading popup
+      // showLoadingPopup(); // Show loading popup
       
         // const apiUrl = `https://panchang-640p.onrender.com/panchang?date=${dateInput}`;
         // console.log(apiUrl);
@@ -47,7 +47,7 @@ async function fetchPanchang(dateInput, callback) {
       
         console.error("Error fetching Panchang:", error);
     } finally {
-        hideLoadingPopup(); // Always hide popup after fetch
+        // hideLoadingPopup(); // Always hide popup after fetch
     }
 }
 
