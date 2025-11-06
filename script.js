@@ -25,7 +25,7 @@ async function fetchPanchang(dateInput, callback) {
       
         // panchang_data = await response.json();
 
-		panchang_data = 
+		panchang_data = null;
       
         // document.getElementById('date').textContent = `Date: ${panchang_data.date}`;
 //        document.getElementById('nakshatra').textContent = `Nakshatra: ${panchang_data.nakshatra}`;
