@@ -222,47 +222,6 @@
             </div>
         </div>
       
-      <div id="loadingPopup" style="
-          display: none;
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          background-color: rgba(0, 0, 0, 0.7);
-          color: white;
-          font-size: 1.2em;
-          font-family: sans-serif;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 1000;
-          text-align: center;
-          padding: 20px;">
-          <div>
-              <div style="margin-bottom: 10px;">Fetching Panchang data, please wait...</div>
-              <div class="spinner" style="
-                  border: 4px solid rgba(255, 255, 255, 0.3);
-                  border-top: 4px solid white;
-                  border-radius: 50%;
-                  width: 40px;
-                  height: 40px;
-                  animation: spin 1s linear infinite;
-                  margin: 0 auto;
-              "></div>
-              <div>
-                <br><br>
-                Solve this Jigsaw riddle by placing the pieces so that the entire play area 
-                is covered <br> except those 3 cells in gray color corresponding to today's <br>
-                solar month, asterism, and lunar zodiac based on drik panchang.
-                <br><br>
-                Click on pieces to rotate them.<br>
-              Long press on pieces to flip them upside down.<br>
-              Symetrical pieces cannot be rotated in all 4 directions.
-                </div>
-          </div>
-      </div>
-   
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", function() {
