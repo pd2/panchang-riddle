@@ -19,11 +19,13 @@ async function fetchPanchang(dateInput, callback) {
     try {
       showLoadingPopup(); // Show loading popup
       
-        const apiUrl = `https://panchang-640p.onrender.com/panchang?date=${dateInput}`;
-        console.log(apiUrl);
-        const response = await fetch(apiUrl);
+        // const apiUrl = `https://panchang-640p.onrender.com/panchang?date=${dateInput}`;
+        // console.log(apiUrl);
+        // const response = await fetch(apiUrl);
       
-        panchang_data = await response.json();
+        // panchang_data = await response.json();
+
+		panchang_data = 
       
         // document.getElementById('date').textContent = `Date: ${panchang_data.date}`;
 //        document.getElementById('nakshatra').textContent = `Nakshatra: ${panchang_data.nakshatra}`;
@@ -32,9 +34,9 @@ async function fetchPanchang(dateInput, callback) {
         // document.getElementById('nakshatra_no').textContent = `Nakshatra no: ${panchang_data.nakshatra_num}`;
         // document.getElementById('raashi_no').textContent = `Raashi no: ${panchang_data.raashi_num}`;
         // document.getElementById('maasa_no').textContent = `Maasa no: ${panchang_data.maasa_num}`;
-        document.getElementById('nakshatra').innerHTML = `नक्षत्रम् = ${panchang_data.नक्षत्र} &nbsp;&nbsp;&nbsp;&nbsp; Asterism: ${panchang_data.nakshatra}`;
-        document.getElementById('raashi').innerHTML = `चंद्र राशि: = ${panchang_data.राशि} &nbsp;&nbsp;&nbsp;&nbsp; Lunar Zodiac: ${panchang_data.rashi}`;
-        document.getElementById('maasa').innerHTML = `सूर्य मास: = ${panchang_data.मासा} &nbsp;&nbsp;&nbsp;&nbsp; Solar month: ${panchang_data.maasa}`;
+//        document.getElementById('nakshatra').innerHTML = `नक्षत्रम् = ${panchang_data.नक्षत्र} &nbsp;&nbsp;&nbsp;&nbsp; Asterism: ${panchang_data.nakshatra}`;
+//        document.getElementById('raashi').innerHTML = `चंद्र राशि: = ${panchang_data.राशि} &nbsp;&nbsp;&nbsp;&nbsp; Lunar Zodiac: ${panchang_data.rashi}`;
+//        document.getElementById('maasa').innerHTML = `सूर्य मास: = ${panchang_data.मासा} &nbsp;&nbsp;&nbsp;&nbsp; Solar month: ${panchang_data.maasa}`;
     
         // Call the provided callback function with the fetched data
         if (callback && typeof callback === "function") {
@@ -452,9 +454,9 @@ function dateChanged(date){
 
 function updSquaresPos(){
   
-	var rNum = panchang_data.raashi_num;
-	var nNum = panchang_data.nakshatra_num;
-	var mNum = panchang_data.maasa_num;
+	var rNum = Math.floor(Math. random() * (12 - 1) + 1); // panchang_data.raashi_num;
+	var nNum = Math.floor(Math. random() * (27 - 1) + 1);// panchang_data.nakshatra_num;
+	var mNum = Math.floor(Math. random() * (12 - 1) + 1); // panchang_data.maasa_num;
 
 	const rSqr = document.getElementById("weekdaySquare");
 	const nSqr = document.getElementById("daySquare");
