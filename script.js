@@ -691,15 +691,15 @@ function onSvgLoad() {
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
 	
-	// Read triplet from URL
-	const num1 = urlParams.get('r1');
-	const num2 = urlParams.get('r2');
-	const num3 = urlParams.get('r3');
+	// Read triplet from URL parameters
+	const r1 = urlParams.get('r1');
+	const r2 = urlParams.get('r2');
+	const r3 = urlParams.get('r3');
 	
-	if (num1 && num2 && num3) {
-		riddleNum1.value = parseInt(num1);
-		riddleNum2.value = parseInt(num2);
-		riddleNum3.value = parseInt(num3);
+	if (r1 && r2 && r3) {
+		riddleNum1.value = parseInt(r1);
+		riddleNum2.value = parseInt(r2);
+		riddleNum3.value = parseInt(r3);
 	} else {
 		// Default values
 		riddleNum1.value = Math.floor(Math.random() * 12) + 1;
@@ -909,10 +909,20 @@ function getHexPcsPos() {
 }
 
 function getPageUrl() {
-	var date =document.getElementById("dateToSolve").value;
+	var r1 = document.getElementById("riddleNum1").value;
+	var r2 = document.getElementById("riddleNum2").value;
+	var r3 = document.getElementById("riddleNum3").value;
 	var side = document.getElementById("usedSide").value;
 	var pcsPos = getHexPcsPos();
-	return  window.location.href.split('?')[0] + "?date=" + date + "&side=" + side + "&pcspos=" + pcsPos + "&fcolor=" + frontColor.substring(1) + "&bcolor=" + backColor.substring(1);
+	
+	return  window.location.href.split('?')[0] + 
+			"?r1=" + r1 + 
+			"&r2=" + r2 + 
+			"&r3=" + r3 + 
+			"&side=" + side + 
+			"&pcspos=" + pcsPos + 
+			"&fcolor=" + frontColor.substring(1) + 
+			"&bcolor=" + backColor.substring(1);
 }
 
 function shareBoard(evt) {
