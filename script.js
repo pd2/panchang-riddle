@@ -495,10 +495,6 @@ function updateSquaresFromTriplet() {
 	nNum = Math.max(1, Math.min(27, nNum));
 	mNum = Math.max(1, Math.min(12, mNum));
 	
-	var rNum = Math.floor(Math. random() * (12 - 1) + 1); // panchang_data.raashi_num;
-	var nNum = Math.floor(Math. random() * (27 - 1) + 1);// panchang_data.nakshatra_num;
-	var mNum = Math.floor(Math. random() * (12 - 1) + 1); // panchang_data.maasa_num;
-
 	const rSqr = document.getElementById("weekdaySquare");
 	const nSqr = document.getElementById("daySquare");
 	const mSqr = document.getElementById("monthSquare");
