@@ -92,7 +92,7 @@ const handleMenuLabelClicked = (label) => {
 		navigationMenu.style.height = secondaryMenu.clientHeight + "px";
 		if ( label == "share-menu") {
 			// init shareUrlInput field
-			$("#shareUrlInput").val(getPageUrl);
+			$("#shareUrlInput").val(getPageUrl());
 		}
 	} else {
 		const helpBtn = document.getElementById("helpButton");
@@ -127,9 +127,11 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#dateToSolve").click(function() {
+	// Add event listeners for the triplet inputs
+	$("#riddleNum1, #riddleNum2, #riddleNum3").on('input change', function() {
 		// restore their color when they still are placed
 		restoreAllPlacedPcsColor();
+		updateSquaresFromTriplet();
 	});
 
 	$("#usedSide").click(function() {
@@ -152,9 +154,46 @@ function showMessage(message) {
 
 function copyUrl() {
 	var urlInput = document.getElementById("shareUrlInput");
-	urlInput.select();
-	document.execCommand("copy");
-	showMessage("URL copied to clipboard!");
+	urlInput.setSelectionRange(0, 99999); // For mobile devices
+	
+	// Try modern clipboard API first
+	if (navigator.clipboard && navigator.clipboard.writeText) {
+		navigator.clipboard.writeText(urlInput.value).then(function() {
+			showMessage("URL copied to clipboard!");
+		}).catch(function() {
+			// Fallback to execCommand
+			document.execCommand("copy");
+			showMessage("URL copied to clipboard!");
+		});
+	} else {
+		// Fallback for older browsers
+		document.execCommand("copy");
+		showMessage("URL copied to clipboard!");
+	}
+}
+
+// Social media sharing functions
+function shareOnTwitter() {
+	var url = encodeURIComponent(getPageUrl());
+	var text = encodeURIComponent("Can you solve this Panchang Riddle?");
+	window.open("https://twitter.com/intent/tweet?text=" + text + "&url=" + url, "_blank");
+}
+
+function shareOnFacebook() {
+	var url = encodeURIComponent(getPageUrl());
+	window.open("https://www.facebook.com/sharer/sharer.php?u=" + url, "_blank");
+}
+
+function shareOnWhatsApp() {
+	var url = encodeURIComponent(getPageUrl());
+	var text = encodeURIComponent("Can you solve this Panchang Riddle? ");
+	window.open("https://wa.me/?text=" + text + url, "_blank");
+}
+
+function shareOnReddit() {
+	var url = encodeURIComponent(getPageUrl());
+	var title = encodeURIComponent("Panchang Riddle Challenge");
+	window.open("https://reddit.com/submit?url=" + url + "&title=" + title, "_blank");
 }
 
 // start of clock managment code
@@ -445,15 +484,17 @@ function updatePcbcolor() {
 	sInputColor.value = backColor;
 }
 
-function dateChanged(date){
-	let newDate = new Date(date);
-  let validDate = newDate.toISOString().split('T')[0];
-	// updSquaresPos(newDate);
-  fetchPanchang(validDate, updSquaresPos);
-}
-
-function updSquaresPos(){
-  
+// Updated function to handle triplet input instead of date
+function updateSquaresFromTriplet() {
+	var rNum = parseInt(document.getElementById("riddleNum1").value) || 1;
+	var nNum = parseInt(document.getElementById("riddleNum2").value) || 1;
+	var mNum = parseInt(document.getElementById("riddleNum3").value) || 1;
+	
+	// Validate ranges
+	rNum = Math.max(1, Math.min(12, rNum));
+	nNum = Math.max(1, Math.min(27, nNum));
+	mNum = Math.max(1, Math.min(12, mNum));
+	
 	var rNum = Math.floor(Math. random() * (12 - 1) + 1); // panchang_data.raashi_num;
 	var nNum = Math.floor(Math. random() * (27 - 1) + 1);// panchang_data.nakshatra_num;
 	var mNum = Math.floor(Math. random() * (12 - 1) + 1); // panchang_data.maasa_num;
@@ -641,26 +682,33 @@ function onSvgLoad() {
    fInputColor.addEventListener("input",changeFrontColor);
    sInputColor.addEventListener("input",changeBackColor);
 
-	// Set current date as date to solve in form
-	const dateInput = document.getElementById("dateToSolve");
+	const riddleNum1 = document.getElementById("riddleNum1");
+	const riddleNum2 = document.getElementById("riddleNum2");
+	const riddleNum3 = document.getElementById("riddleNum3");
 	const sideInput = document.getElementById("usedSide");
 
 	// read params from URL to support puzzle share feature
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
-	const date= urlParams.get('date');
-	var cnvDate = new Date(date);
-	var validDate;
-	if ( (date != null ) && (! isNaN(cnvDate.getTime() ) ) ) {
-		validDate = date;
+	
+	// Read triplet from URL
+	const num1 = urlParams.get('r1');
+	const num2 = urlParams.get('r2');
+	const num3 = urlParams.get('r3');
+	
+	if (num1 && num2 && num3) {
+		riddleNum1.value = parseInt(num1);
+		riddleNum2.value = parseInt(num2);
+		riddleNum3.value = parseInt(num3);
 	} else {
-		// Using UTC (universal coordinated time)
-		validDate = new Date().toISOString().split('T')[0];
+		// Default values
+		riddleNum1.value = Math.floor(Math.random() * 12) + 1;
+		riddleNum2.value = Math.floor(Math.random() * 27) + 1;
+		riddleNum3.value = Math.floor(Math.random() * 12) + 1;
 	}
-	// Place the grey squares in puzzle corresponding to selected date
-	dateInput.value = validDate;
-  fetchPanchang(validDate, updSquaresPos);
-	// updSquaresPos(validDate);
+	
+	updateSquaresFromTriplet();
+	
 	// read pieces colors from URL
 	var newColor;
 	const frontSideColor = urlParams.get("fcolor");
