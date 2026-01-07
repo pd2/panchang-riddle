@@ -72,6 +72,50 @@
                                     </button>
                             </div>
                             <section id="share-menu" class="secondary-menu zsubmenu">
+                              <div id="share-menu" class="secondary-menu">
+                                <h3>Share This Riddle</h3>
+                                
+                                <div id="shareMessage">URL copied to clipboard!</div>
+                                
+                                <input type="text" 
+                                       id="shareUrlInput" 
+                                       readonly 
+                                       value="">
+                                
+                                <div class="share-buttons">
+                                    <button class="share-btn copy" onclick="copyUrl()">
+                                        📋 Copy Link
+                                    </button>
+                                    
+                                    <button class="share-btn twitter" onclick="shareOnTwitter()">
+                                        🐦 Twitter
+                                    </button>
+                                    
+                                    <button class="share-btn facebook" onclick="shareOnFacebook()">
+                                        📘 Facebook
+                                    </button>
+                                    
+                                    <button class="share-btn whatsapp" onclick="shareOnWhatsApp()">
+                                        💬 WhatsApp
+                                    </button>
+                                    
+                                    <button class="share-btn reddit" onclick="shareOnReddit()">
+                                        🔴 Reddit
+                                    </button>
+                                    
+                                    <button class="share-btn linkedin" onclick="shareOnLinkedIn()">
+                                        💼 LinkedIn
+                                    </button>
+                                    
+                                    <button class="share-btn email" onclick="shareViaEmail()">
+                                        ✉️ Email
+                                    </button>
+                                </div>
+                                
+                                <p style="font-size: 12px; color: #666; margin-top: 10px;">
+                                    Share this riddle with friends and challenge them to solve it!
+                                </p>
+
                                 <div id="share-menu-background" class="zsubmenu" onclick="handleMenuLabelClicked()">
                                 </div>
                                 <input type="text" id="shareUrlInput" class="zsubmenu-content" readonly>
@@ -91,9 +135,37 @@
                     </section>
                 </section>
 
-                <form class="puzzleForm">
-                    <input id="dateToSolve" type="date" name="date" value="2025-01-01" onChange="dateChanged(this.value);">
-                </form>
+                  <div class="riddle-input-container">
+                      <div>
+                          <label class="input-label" for="riddleNum1">Number 1 (1-12)</label>
+                          <input type="number" 
+                                 id="riddleNum1" 
+                                 class="riddle-input" 
+                                 min="1" 
+                                 max="12" 
+                                 value="1">
+                      </div>
+                      
+                      <div>
+                          <label class="input-label" for="riddleNum2">Number 2 (1-27)</label>
+                          <input type="number" 
+                                 id="riddleNum2" 
+                                 class="riddle-input" 
+                                 min="1" 
+                                 max="27" 
+                                 value="1">
+                      </div>
+                      
+                      <div>
+                          <label class="input-label" for="riddleNum3">Number 3 (1-12)</label>
+                          <input type="number" 
+                                 id="riddleNum3" 
+                                 class="riddle-input" 
+                                 min="1" 
+                                 max="12" 
+                                 value="1">
+                      </div>
+                  </div>
                 </div>
             <div class="navbar-right">
                 <div class="clockContainer">
