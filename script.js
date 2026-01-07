@@ -1052,11 +1052,11 @@ function checkIfPuzzleSolved() {
 }
 
 function checkSol() {
-	var dateInput = document.getElementById("dateToSolve");
+	// var dateInput = document.getElementById("dateToSolve");
 	var sideSelect = document.getElementById("usedSide");
-	var date = dateInput.value;
+	// var date = dateInput.value;
 	var side = sideSelect.value;
-	httpReqDate = date;
+	// httpReqDate = date;
 	httpReqSide = side;
 	hexPcsPos = "";
 
@@ -1071,9 +1071,9 @@ function checkSol() {
 
 	var requestResponse = null;
 	// manage the protocol because http request are blocked on https pages and vice-versa
-	var theUrl = location.protocol + solutionsServerURI + "?date=" + httpReqDate + "&side=" + httpReqSide + "&pcspos=" + hexPcsPos + "&action=check";
-	xmlHttpReq.open( "GET", theUrl, true); // false for synchronous request
-	xmlHttpReq.onload = httpRequestEnded;
+	// var theUrl = location.protocol + solutionsServerURI + "?date=" + httpReqDate + "&side=" + httpReqSide + "&pcspos=" + hexPcsPos + "&action=check";
+	// xmlHttpReq.open( "GET", theUrl, true); // false for synchronous request
+	// xmlHttpReq.onload = httpRequestEnded;
 	// xmlHttpReq.send( null );
 	if ( isHttpReqForEnd == false ) {
 		// start animation of "check" button to show that the request has been taken into account
