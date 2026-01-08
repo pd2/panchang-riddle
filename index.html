@@ -72,44 +72,42 @@
                                     </button>
                             </div>
                             <section id="share-menu" class="secondary-menu zsubmenu">
-                              <div id="share-menu" class="secondary-menu">
-                                <h3>Share This Riddle</h3>
-                                
-                                <div id="shareMessage">URL copied to clipboard!</div>
-                                
-                                <input type="text" 
-                                       id="shareUrlInput" 
-                                       readonly 
-                                       value="">
-                                
-                                <div class="share-buttons">
-                                    <button class="share-btn copy" onclick="copyUrl()">
-                                        📋 Copy Link
-                                    </button>
+                                <div class="zsubmenu-content">
+                                    <h3 class="share-menu-title">Share This Riddle</h3>
                                     
-                                    <button class="share-btn twitter" onclick="shareOnTwitter()">
-                                        🐦 Twitter
-                                    </button>
+                                    <div id="shareMessage">URL copied to clipboard!</div>
                                     
-                                    <button class="share-btn facebook" onclick="shareOnFacebook()">
-                                        📘 Facebook
-                                    </button>
+                                    <input type="text" id="shareUrlInput" readonly value="">
                                     
-                                    <button class="share-btn whatsapp" onclick="shareOnWhatsApp()">
-                                        💬 WhatsApp
-                                    </button>
-                                    
-                                    <button class="share-btn reddit" onclick="shareOnReddit()">
-                                        🔴 Reddit
-                                    </button>
-                                    
-                                    <button class="share-btn linkedin" onclick="shareOnLinkedIn()">
-                                        💼 LinkedIn
-                                    </button>
-                                    
-                                    <button class="share-btn email" onclick="shareViaEmail()">
-                                        ✉️ Email
-                                    </button>
+                                    <div class="share-buttons">
+                                        <button class="share-btn copy" onclick="copyUrl()">
+                                            📋 Copy Link
+                                        </button>
+                                        
+                                        <button class="share-btn twitter" onclick="shareOnTwitter()">
+                                            🐦 Twitter
+                                        </button>
+                                        
+                                        <button class="share-btn facebook" onclick="shareOnFacebook()">
+                                            📘 Facebook
+                                        </button>
+                                        
+                                        <button class="share-btn whatsapp" onclick="shareOnWhatsApp()">
+                                            💬 WhatsApp
+                                        </button>
+                                        
+                                        <button class="share-btn reddit" onclick="shareOnReddit()">
+                                            🔴 Reddit
+                                        </button>
+                                        
+                                        <button class="share-btn linkedin" onclick="shareOnLinkedIn()">
+                                            💼 LinkedIn
+                                        </button>
+                                        
+                                        <button class="share-btn email" onclick="shareViaEmail()">
+                                            ✉️ Email
+                                        </button>
+                                    </div>
                                 </div>
                                 
                                 <p style="font-size: 12px; color: #666; margin-top: 10px;">
@@ -125,18 +123,18 @@
                             <section id="help-menu" class="secondary-menu zsubmenu" onclick="handleMenuLabelClicked()">
                                 <p id="help-menu-text" class="zsubmenu-content">
                                 Solve Jigsaw riddle by placing the pieces so that the entire play area 
-                                is covered except 3 gray cells - today's solar month, asterism, and lunar zodiac based on drik panchang.
+                                is covered except 3 gray cells - based on the three numbers you choose.
                                 <br><br>
                                 Click on pieces to rotate them.<br>
                                 Long press on pieces to flip them upside down.<br>
-                                Symetrical pieces cannot be rotated in all 4 directions.</p>
+                                Symmetrical pieces cannot be rotated in all 4 directions.</p>
                             </section>
                         </div>
                     </section>
                 </section>
 
                   <div class="riddle-input-container">
-                      <div>
+                      <div class="riddle-input-group">
                           <label class="input-label" for="riddleNum1">Number 1 (1-12)</label>
                           <input type="number" 
                                  id="riddleNum1" 
@@ -146,7 +144,7 @@
                                  value="1">
                       </div>
                       
-                      <div>
+                      <div class="riddle-input-group">
                           <label class="input-label" for="riddleNum2">Number 2 (1-27)</label>
                           <input type="number" 
                                  id="riddleNum2" 
@@ -156,7 +154,7 @@
                                  value="1">
                       </div>
                       
-                      <div>
+                      <div class="riddle-input-group">
                           <label class="input-label" for="riddleNum3">Number 3 (1-12)</label>
                           <input type="number" 
                                  id="riddleNum3" 
