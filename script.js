@@ -498,31 +498,45 @@ function updatePcbcolor() {
 
 // Updated function to handle triplet input instead of date
 function updateSquaresFromTriplet() {
-	var rNum = parseInt(document.getElementById("riddleNum1").value) || 1;
+	var mNum = parseInt(document.getElementById("riddleNum1").value) || 1;
 	var nNum = parseInt(document.getElementById("riddleNum2").value) || 1;
-	var mNum = parseInt(document.getElementById("riddleNum3").value) || 1;
+	var rNum = parseInt(document.getElementById("riddleNum3").value) || 1;
 	
 	// Validate ranges
-	rNum = Math.max(1, Math.min(12, rNum));
-	nNum = Math.max(1, Math.min(27, nNum));
 	mNum = Math.max(1, Math.min(12, mNum));
+	nNum = Math.max(1, Math.min(27, nNum));
+	rNum = Math.max(1, Math.min(12, rNum));
 	
 	// Update input values if they were out of range
-	document.getElementById("riddleNum1").value = rNum;
+	document.getElementById("riddleNum1").value = mNum;
 	document.getElementById("riddleNum2").value = nNum;
-	document.getElementById("riddleNum3").value = mNum;
+	document.getElementById("riddleNum3").value = rNum;
 	
 	const rSqr = document.getElementById("weekdaySquare");
 	const nSqr = document.getElementById("daySquare");
 	const mSqr = document.getElementById("monthSquare");
 
 	if ( ! isNaN(rNum) && ! isNaN(nNum) && ! isNaN(mNum) ) {
-		rSqr.setAttribute( 'x', ( (rNum % 6) * 100 ) + 100);
-		rSqr.setAttribute( 'y', ( Math.trunc( rNum / 6  ) * 100 ) + 700);
-		nSqr.setAttribute( 'x', ( ( nNum % 7  ) * 100 ) + 100);
-		nSqr.setAttribute( 'y',( Math.trunc( nNum / 7 ) * 100 ) + 300);
-		mSqr.setAttribute('x', ( (mNum % 6 ) * 100 ) + 100);
-		mSqr.setAttribute('y', ( Math.trunc( mNum / 6  ) * 100 ) + 100);
+		// Month square positioning (1-12): 2 rows, 6 columns
+		// Position: (mNum-1) gives 0-11, then calculate row and column
+		var mCol = ((mNum - 1) % 6);
+		var mRow = Math.floor((mNum - 1) / 6);
+		mSqr.setAttribute('x', (mCol * 100) + 100);
+		mSqr.setAttribute('y', (mRow * 100) + 100);
+		
+		// Day/Nakshatra square positioning (1-27): 4 rows, 7 columns
+		// Position: (nNum-1) gives 0-26
+		var nCol = ((nNum - 1) % 7);
+		var nRow = Math.floor((nNum - 1) / 7);
+		nSqr.setAttribute('x', (nCol * 100) + 100);
+		nSqr.setAttribute('y', (nRow * 100) + 300);
+		
+		// Weekday/Raashi square positioning (1-12): 2 rows, 6 columns
+		// Position: (rNum-1) gives 0-11
+		var rCol = ((rNum - 1) % 6);
+		var rRow = Math.floor((rNum - 1) / 6);
+		rSqr.setAttribute('x', (rCol * 100) + 100);
+		rSqr.setAttribute('y', (rRow * 100) + 700);
 	}
 }
 
@@ -922,9 +936,9 @@ function getHexPcsPos() {
 }
 
 function getPageUrl() {
-	var r1 = document.getElementById("riddleNum1").value;
-	var r2 = document.getElementById("riddleNum2").value;
-	var r3 = document.getElementById("riddleNum3").value;
+	var r1 = document.getElementById("riddleNum1").value;  // Month (1-12)
+	var r2 = document.getElementById("riddleNum2").value;  // Day (1-27)
+	var r3 = document.getElementById("riddleNum3").value;  // Raashi (1-12)
 	var side = document.getElementById("usedSide").value;
 	var pcsPos = getHexPcsPos();
 	
