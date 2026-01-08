@@ -457,16 +457,23 @@
     100% { transform: rotate(360deg); }
 }
 
+        /* Styles for triplet inputs */
         .riddle-input-container {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
-            margin: 15px 0;
+            padding: 5px;
+        }
+        
+        .riddle-input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .riddle-input {
-            width: 60px;
-            padding: 8px;
+            width: 50px;
+            padding: 5px;
             font-size: 16px;
             text-align: center;
             border: 2px solid #6495ED;
@@ -479,39 +486,46 @@
         }
         
         .input-label {
-            font-size: 12px;
+            font-size: 10px;
             color: #666;
+            margin-bottom: 2px;
         }
         
+        /* Styles for share buttons */
         .share-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 15px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 10px 0;
         }
         
         .share-btn {
-            padding: 10px 15px;
+            padding: 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
             color: white;
-            transition: opacity 0.3s;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
         }
         
         .share-btn:hover {
             opacity: 0.8;
+            transform: translateY(-2px);
         }
         
+        .share-btn.copy { background-color: #6495ED; grid-column: 1 / -1; }
         .share-btn.twitter { background-color: #1DA1F2; }
         .share-btn.facebook { background-color: #1877F2; }
         .share-btn.whatsapp { background-color: #25D366; }
         .share-btn.reddit { background-color: #FF4500; }
         .share-btn.linkedin { background-color: #0077B5; }
         .share-btn.email { background-color: #666; }
-        .share-btn.copy { background-color: #6495ED; }
         
         #shareMessage {
             display: none;
@@ -521,6 +535,7 @@
             border-radius: 5px;
             margin: 10px 0;
             text-align: center;
+            font-weight: bold;
         }
         
         #shareUrlInput {
@@ -529,8 +544,15 @@
             margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 5px;
-            font-size: 12px;
+            font-size: 11px;
+            font-family: monospace;
         }
+        
+        .share-menu-title {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            font-weight: bold;
+
 
 footer{
   text-align: center;
