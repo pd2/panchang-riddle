@@ -196,6 +196,18 @@ function shareOnReddit() {
 	window.open("https://reddit.com/submit?url=" + url + "&title=" + title, "_blank");
 }
 
+function shareOnLinkedIn() {
+	var url = encodeURIComponent(getPageUrl());
+	window.open("https://www.linkedin.com/sharing/share-offsite/?url=" + url, "_blank");
+}
+
+function shareViaEmail() {
+	var url = encodeURIComponent(getPageUrl());
+	var subject = encodeURIComponent("Panchang Riddle Challenge");
+	var body = encodeURIComponent("Can you solve this Panchang Riddle? " + getPageUrl());
+	window.location.href = "mailto:?subject=" + subject + "&body=" + body;
+}
+
 // start of clock managment code
 const playImgSrc = "https://olivierrt.pythonanywhere.com/dailycalendarpuzzle/play_blueicon_160.png";
 const pauseImgSrc = "https://olivierrt.pythonanywhere.com/dailycalendarpuzzle/pause_blueicon_160.png";
