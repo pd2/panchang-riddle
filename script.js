@@ -507,6 +507,11 @@ function updateSquaresFromTriplet() {
 	nNum = Math.max(1, Math.min(27, nNum));
 	mNum = Math.max(1, Math.min(12, mNum));
 	
+	// Update input values if they were out of range
+	document.getElementById("riddleNum1").value = rNum;
+	document.getElementById("riddleNum2").value = nNum;
+	document.getElementById("riddleNum3").value = mNum;
+	
 	const rSqr = document.getElementById("weekdaySquare");
 	const nSqr = document.getElementById("daySquare");
 	const mSqr = document.getElementById("monthSquare");
