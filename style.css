@@ -616,6 +616,14 @@
         }
     }
 
+.share-popup a {
+  display: block;
+  max-width: 100%;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
 footer{
   text-align: center;
 }
