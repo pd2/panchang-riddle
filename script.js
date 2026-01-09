@@ -1606,3 +1606,11 @@ function makeDraggable(evt) {
 	}
 
 }// makeDraggable
+
+function openShare() {
+  document.getElementById("shareOverlay").style.display = "flex";
+}
+
+function closeShare() {
+  document.getElementById("shareOverlay").style.display = "none";
+}
