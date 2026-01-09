@@ -72,7 +72,8 @@
                                     </button>
                             </div>
                             <section id="share-menu" class="secondary-menu zsubmenu">
-                                <div class="zsubmenu-content">
+                                <div class="share-overlay" id="shareOverlay" style="display:none;" class="zsubmenu-content">
+                                  <div class="share-popup">
                                     <h3 class="share-menu-title">Share This Riddle</h3>
                                     
                                     <div id="shareMessage">URL copied to clipboard!</div>
@@ -107,6 +108,9 @@
                                         <button class="share-btn email" onclick="shareViaEmail()">
                                             ✉️ Email
                                         </button>
+
+                                        <button onclick="closeShare()">Close</button>
+                                    </div>
                                     </div>
                                 </div>
                                 
